@@ -45,7 +45,7 @@ namespace API_Authentication_BasicImplementation.Controllers
         }
 
         [Authorize]
-        [HttpGet]
+        [HttpGet("Authentic")]
         public IActionResult AuthenticatedOnlyEndPoint()
         {
             return Ok("You Are Authenticated.");

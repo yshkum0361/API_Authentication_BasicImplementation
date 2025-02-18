@@ -5,9 +5,9 @@
         public Guid id { get; set; }
         public String UserName { get; set; } = string.Empty;
 
-        public String PasswordHash { get; set; } = string.Empty;    
+        public String PasswordHash { get; set; } = string.Empty;
 
-        public String Role { get; set; }
+        public String Role { get; set; } = string.Empty;
 
         public string? RefreshToken  { get; set; }
 

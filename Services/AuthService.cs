@@ -55,6 +55,7 @@ namespace API_Authentication_BasicImplementation.Services
 
             user.UserName = request.UserName;   
             user.PasswordHash = hashedPassword;
+            
 
             context.UserLoginDetails.Add(user);
             await context.SaveChangesAsync();
