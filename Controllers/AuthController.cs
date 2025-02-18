@@ -34,7 +34,7 @@ namespace API_Authentication_BasicImplementation.Controllers
 
         [HttpPost("login")]
 
-        public async Task<ActionResult<string>> Login(UserDTO request)
+        public async Task<ActionResult<TokenResponseDTO>> Login(UserDTO request)
         {
            var token = await authService.LoginAsync(request);
             if (token == null)
@@ -58,7 +58,17 @@ namespace API_Authentication_BasicImplementation.Controllers
             return Ok("You Are An Admin.");
         }
 
+        [HttpPost]
 
+        public async Task<ActionResult<TokenResponseDTO>> RefreshToken(RefreshTokenRequestDTO request)
+        {
+            var result  = await authService.RefreshTokenAsync(request);
+            if(result == null || result.AccessToken is null || result.RefreshToken is null )
+            {
+                return Unauthorized("Invalid Refresh Token!!!");
+            }
+            return Ok(result);  
+        }
 
     }
 }
